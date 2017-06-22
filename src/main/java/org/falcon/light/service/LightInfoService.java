@@ -19,6 +19,9 @@ import java.util.List;
 public class LightInfoService implements ILightInfoService {
     @Autowired
     private LightInfoRepository lightInfoRepository;
+
+
+
     /**
      * 保存路灯信息
      * @param lightInfo {@link LightInfo}

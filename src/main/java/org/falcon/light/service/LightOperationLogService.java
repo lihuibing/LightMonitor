@@ -21,10 +21,15 @@ public class LightOperationLogService extends CommonService<LightOperationLog,St
     @Autowired
     private LightOperationLogRepository lightOperationLogRepository;
 
-
+    
     @Override
     public MongoRepository<LightOperationLog, String> getMongoRepository() {
         return lightOperationLogRepository;
+    }
+
+    @Override
+    public void save(LightOperationLog lightOperationLog) {
+        lightOperationLogRepository.save(lightOperationLog);
     }
 
     /**

@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "LightOperationLog")
 public class LightOperationLog extends BaseEntity {
 
+
     /**
      * 指令内容
      */
