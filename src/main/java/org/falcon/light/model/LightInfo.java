@@ -2,7 +2,6 @@ package org.falcon.light.model;
 
 import lombok.Data;
 import org.falcon.framework.model.BaseEntity;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document(collection = "LightInfo")
 public class LightInfo extends BaseEntity {
-
+    
     /**
      * 路灯坐标
      */

@@ -2,6 +2,8 @@ package org.falcon.light.controller;
 
 import org.falcon.mina.ServerHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -10,8 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LightInfoController {
 
-    @Autowired
-    ServerHandler serverHandler;
+   @RequestMapping("/test")
+   public String test(@RequestParam String name){
+       System.out.println(name);
+       try {
+           Thread.sleep(100);
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+       return "hello";
+   }
+
+
 
 
 }

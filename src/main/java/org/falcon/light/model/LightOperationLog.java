@@ -11,18 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document(collection = "LightOperationLog")
 public class LightOperationLog extends BaseEntity {
-
+    
 
     /**
      * 指令内容
      */
     private String message;
-
-    /**
-     * 操作时间
-     */
-    private String insertTime;
-
     /**
      * 路灯信息
      */

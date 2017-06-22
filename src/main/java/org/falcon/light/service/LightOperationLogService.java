@@ -27,11 +27,6 @@ public class LightOperationLogService extends CommonService<LightOperationLog,St
         return lightOperationLogRepository;
     }
 
-    @Override
-    public void save(LightOperationLog lightOperationLog) {
-        lightOperationLogRepository.save(lightOperationLog);
-    }
-
     /**
      * 保存日志
      * @param messageStr 消息内容
@@ -44,7 +39,6 @@ public class LightOperationLogService extends CommonService<LightOperationLog,St
         lightOperationLog.setId(UUID.randomUUID().toString());
         lightOperationLog.setLightInfo(lightInfo);
         lightOperationLog.setType(LightOperationConstants.LIGHT_OPERATION_RECEIVED);
-        lightOperationLog.setInsertTime(DateUtils.getCurrentDateTime());
         save(lightOperationLog);
     }
 

@@ -70,5 +70,6 @@
     <orderEntry type="library" name="Maven: org.apache.mina:mina-integration-beans:2.0.16" level="project" />
     <orderEntry type="library" name="Maven: org.apache.mina:mina-integration-spring:1.1.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.mina:mina-filter-ssl:1.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.10" level="project" />
   </component>
 </module>

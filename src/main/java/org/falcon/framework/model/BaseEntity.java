@@ -20,4 +20,9 @@ public class BaseEntity {
      * 数据状态
      */
     private int recStatus;
+
+    /**
+     * 更新时间
+     */
+    private String updateDate;
 }
