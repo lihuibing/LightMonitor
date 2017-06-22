@@ -4,6 +4,7 @@ import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
+<<<<<<< HEAD
 import org.falcon.light.model.LightInfo;
 import org.falcon.light.service.ILightInfoService;
 import org.falcon.light.service.ILightOperationLogService;
@@ -13,6 +14,22 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+=======
+import org.falcon.light.constants.LightOperationConstants;
+import org.falcon.light.model.LightInfo;
+import org.falcon.light.model.LightOperationLog;
+import org.falcon.light.service.ILightInfoService;
+import org.falcon.light.service.ILightOperationLogService;
+import org.falcon.utils.ByteUtils;
+import org.falcon.utils.DateUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+>>>>>>> 11240d4fe4448ed705fdaf116aa387e93b640d4f
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -79,17 +96,38 @@ public class ServerHandler extends IoHandlerAdapter {
                     String shortIp = contents[7] + " " + contents[8];
                     List<LightInfo> lightInfos = lightInfoService.findByShortIp(shortIp);
                     if( lightInfos.size()>0 ){
+<<<<<<< HEAD
                         lightOperationLogService.addLightOperationLog(messageStr, lightInfos.get(0));
                     } else {
                         throw new LightNotFoundException("unknown light,the short ip is : " + shortIp +" ,please check it");
+=======
+                        LightInfo lightInfo = lightInfos.get(0);
+                        LightOperationLog lightOperationLog = new LightOperationLog();
+                        lightOperationLog.setMessage(messageStr);
+                        lightOperationLog.setId(UUID.randomUUID().toString());
+                        lightOperationLog.setLightInfo(lightInfo);
+                        lightOperationLog.setType(LightOperationConstants.LIGHT_OPERATION_RECEIVED);
+                        lightOperationLog.setInsertTime(DateUtils.getCurrentDateTime());
+                        lightOperationLogService.save(lightOperationLog);
+                    } else {
+                        throw new LightNotFoundException("unknown light,the short ip is :" + shortIp +",please check it");
+>>>>>>> 11240d4fe4448ed705fdaf116aa387e93b640d4f
                     }
                 }
             }
         } else {
+<<<<<<< HEAD
             throw new MessageException("get a wrong message from client: " + session.getId());
         }
     }
 
+=======
+            throw new MessageException("get a wrong message from client:" + session.getId());
+        }
+    }
+
+
+>>>>>>> 11240d4fe4448ed705fdaf116aa387e93b640d4f
     @Override
     public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
         removeSession(session);
